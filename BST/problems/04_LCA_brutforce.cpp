@@ -1,6 +1,7 @@
  //NOT OPTIMISED 
  //TC:O(log n) like binary search
  //SC:O(log n) due to recursion stack
+ 
  TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         //base case 
         if(root==NULL){
