@@ -1,2 +1,0 @@
- h.deleteRoot();
-    h.print();
