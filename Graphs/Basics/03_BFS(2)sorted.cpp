@@ -40,16 +40,15 @@ void bfs(unordered_map<int, set<int>> &adjList, unordered_map<int, bool> &visite
     }
 }
 
-
 vector<int> BFS(int vertex, vector<pair<int, int>> edges)
 {
-   unordered_map<int, set<int>> adjList;
+    unordered_map<int, set<int>> adjList;
     vector<int> ans;
     unordered_map<int, bool> visited;
 
     prepareAdjList(adjList, edges);
-    //printAdjList(adjList);
-    // traverse all components of a graph
+    // printAdjList(adjList);
+    //  traverse all components of a graph
     for (int i = 0; i < vertex; i++)
     {
         if (!visited[i])
@@ -57,5 +56,5 @@ vector<int> BFS(int vertex, vector<pair<int, int>> edges)
             bfs(adjList, visited, ans, i);
         }
     }
-  return ans;
+    return ans;
 }
