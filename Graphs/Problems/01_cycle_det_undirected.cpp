@@ -3,52 +3,63 @@
 using namespace std;
 
 // } Driver Code Ends
-class Solution {
-  public:
-    unordered_map <int,bool> visited;
+class Solution
+{
+public:
+    unordered_map<int, bool> visited;
     // Fudfsion to detect cycle in an undirected graph.
-    bool dfsCycle(int vertex,int parent, vector<int> adj[]){
-            visited[vertex] = true;
-            
-           for(auto i : adj[vertex]){
-                     if(visited[i] == true && i!= parent){
-                          return true;
-                        }
-                     else if(visited[i] == false){
-                          
-                          return dfsCycle(i,vertex,adj);
-                     }
-                 }
-           
-           
+    bool dfsCycle(int vertex, int parent, vector<int> adj[])
+    {
+        visited[vertex] = true;
+
+        for (auto i : adj[vertex])
+        {
+            if (!visited[i])
+            {
+                if (dfsCycle(i, vertex, adj))
+                {
+                    return true;
+                }
+            }
+            else if (i != parent)
+            {
+                return true;
+            }
+        }
+
         return false;
-        
     }
-    
-    
-    bool isCycle(int V, vector<int> adj[]) {
+
+    bool isCycle(int V, vector<int> adj[])
+    {
         // Code here
-        
-        for(int i=0;i<V;i++){
-              if(visited[i] == false){
-                    if(dfsCycle(i,-1,adj)){
-                         return true;
-                    }
-              }
+
+        for (int i = 0; i < V; i++)
+        {
+            if (visited[i] == false)
+            {
+                if (dfsCycle(i, -1, adj))
+                {
+                    return true;
+                }
+            }
         }
         return false;
     }
 };
 
 //{ Driver Code Starts.
-int main() {
+int main()
+{
     int tc;
     cin >> tc;
-    while (tc--) {
+    while (tc--)
+    {
         int V, E;
         cin >> V >> E;
         vector<int> adj[V];
-        for (int i = 0; i < E; i++) {
+        for (int i = 0; i < E; i++)
+        {
             int u, v;
             cin >> u >> v;
             adj[u].push_back(v);
